@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="https://thenewboston.com/favicon.ico"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TNB Gifts</title>
+    <script>
+        function copy_id(id) {
+            navigator.clipboard.writeText(id);
+            alert("ID Copied!\nNow send coins to your friend with ID as the memo");
+        }
+    </script>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0px;
+        }
+
+        body {
+            text-align: center;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
+        .main_container {
+            min-width: 350px;
+            max-width: 940px;
+            padding: 20px;
+            margin: auto;
+        }
+
+        .nav_bar {
+            display: flex;
+            align-items: center;
+            position: relative;
+            height: 100px;
+        }
+
+        .logo {
+            position: absolute;
+            left: 0px;
+            font-size: 1.2rem;
+        }
+
+        .my_collection {
+            position: absolute;
+            right: 0px;
+            border: 2px solid black;
+            border-radius: 5px;
+            padding: 5px 15px;
+            font-weight: bold;
+
+        }
+
+        .header {
+            margin: 50px 0px 70px;
+        }
+
+        .header_title {
+            margin-bottom: 20px;
+        }
+
+        .form {
+            max-width: 600px;
+            margin: auto;
+        }
+
+        .form_input {
+            display: inline-block;
+            width: 70%;
+            height: 30px;
+            border: 2px solid black;
+            border-radius: 5px;
+
+        }
+
+        .form_button {
+            background-color: white;
+            font-weight: bold;
+            height: 30px;
+            padding: 0px 15px;
+            border: 2px solid black;
+            border-radius: 5px;
+        }
+
+
+        .step_container {
+            display: flex;
+            align-items: center;
+            max-width: 480px;
+            margin: 10px auto;
+            border: 2px solid black;
+            border-radius: 5px;
+            text-align: left;
+        }
+
+        .step_number {
+            font-size: 2.2rem;
+            padding: 0px 6px;
+        }
+
+        .step_text {
+            padding: 5px 0px;
+        }
+
+        .image_container {
+            width: 250px;
+            border: 2px solid black;
+            display: inline-block;
+            border-radius: 5px;
+            margin: 10px;
+            padding: 2px;
+        }
+
+        .image {
+            width: 100%;
+            border-radius: 4px;
+        }
+
+        .image_title {
+            font-weight: bold;
+            margin: 8px;
+        }
+
+        .copy_id {
+            cursor: pointer;
+            color: white;
+            background-color: black;
+            font-size: 0.8rem;
+            font-weight: bold;
+            display: inline-block;
+            padding: 4px 25px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main_container">
+
+        <div class="nav_bar">
+            <a class="logo" href="{% url 'main:index' %}">
+                <h1>TNB Gifts</h1>
+            </a>
+            <a class="my_collection" href="{% url 'main:collection' %}">My Collection</a>
+        </div>
+
+        <div class="header">
+            {% block header %}{% endblock %}
+        </div>
+
+
+        <div class="images">
+            {% block images %}{% endblock %}
+        </div>
+
+    </div>
+</body>
+
+</html>

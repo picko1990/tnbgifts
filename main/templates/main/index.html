@@ -1,0 +1,35 @@
+{% extends "main/base.html" %}
+
+{% block header %}
+<h2 class="header_title">Send gifts to your friends from our cool image collection</h2>
+<div>
+    <div class="step_container">
+        <p class="step_number">1</p>
+        <p class="step_text">Choose an Image and click on <b>Copy ID</b></p>
+    </div>
+    <div class="step_container">
+        <p class="step_number">2</p>
+        <p class="step_text">Send coins to your friend with <b>image ID</b> as the <b>memo</b></p>
+    </div>
+    <div class="step_container">
+        <p class="step_number">3</p>
+        <p class="step_text">Your friend clicks on <b>My Collection</b> and checks his new gift</p>
+    </div>
+</div>
+{% endblock %}
+
+
+{% block images %}
+{% if images %}
+{% for image in images %}
+<div class="image_container">
+    <img src="{{image.url}}" alt="" class="image">
+    <p class="image_title">{{image.title|truncatechars:20}}</p>
+    <p class="copy_id" id="{{image.unique_id}}" onclick="copy_id(this.id)">Copy ID</p>
+</div>
+{% endfor %}
+
+{% else %}
+<p>No Images available</p>
+{% endif %}
+{% endblock %}

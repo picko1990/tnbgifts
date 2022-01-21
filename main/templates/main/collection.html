@@ -1,0 +1,27 @@
+{% extends "main/base.html" %}
+
+{% block header %}
+<h2 class="header_title">Check your collection</h2>
+<form action="{% url 'main:collection' %}" class="form">
+    <input class="form_input" type="text" placeholder="Enter your TNBC Adress" name="address" value="{{address}}">
+    <input class="form_button" type="submit" value="Check">
+</form>
+{% endblock %}
+
+
+{% block images %}
+{% if address %}
+{% if images %}
+{% for image in images %}
+<div class="image_container">
+    <img src="{{image.url}}" alt="" class="image">
+    <p class="image_title">{{image.title|truncatechars:20}}</p>
+    <p class="copy_id" id="{{image.unique_id}}" onclick="copy_id(this.id)">Copy ID</p>
+</div>
+{% endfor %}
+
+{% else %}
+<p>No Images for this address :(</p>
+{% endif %}
+{% endif %}
+{% endblock %}
